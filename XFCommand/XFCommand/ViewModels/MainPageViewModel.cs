@@ -1,34 +1,36 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 
 namespace XFCommand.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    // xfFody1INotifyPropertyChanged
+    public class MainPageViewModel : INotifyPropertyChanged, INavigationAware
     {
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
+        // xfFody1INotifyPropertyChangedImp
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Title { get; set; }
+
+        // xfDataBindingCommandWithParameter(泛型)
+
+        public DelegateCommand<string> BtnCommand { get; set; }
 
         public MainPageViewModel()
         {
-
+            // x => CommandParameter
+            BtnCommand = new DelegateCommand<string>((x) =>
+            {
+                Title = x;
+            });
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
