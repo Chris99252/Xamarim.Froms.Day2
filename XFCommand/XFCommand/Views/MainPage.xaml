@@ -5,7 +5,9 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="XFCommand.Views.MainPage"
              Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding Title}" />
+        <Button Text="按鈕命令1" Command="{Binding BtnCommand}" CommandParameter="按鈕命令1"></Button>
+        <Button Text="按鈕命令2" Command="{Binding BtnCommand}" CommandParameter="按鈕命令2"></Button>
+    </StackLayout>
 </ContentPage>
